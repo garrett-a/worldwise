@@ -7,6 +7,7 @@ import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./pages/AppLayout";
 import CityList from "./components/CityList";
 import { useEffect, useState } from "react";
+import CountriesList from "./components/CountriesList";
 
 const BASE_URL = "http://localhost:9000";
 
@@ -21,6 +22,7 @@ const App = () => {
       try {
         const res = await fetch(`${BASE_URL}/cities`);
         const data = await res.json();
+        console.log(res, data);
         setCities(data);
         setIsLoading(false);
       } catch {
@@ -48,7 +50,10 @@ const App = () => {
             path="cities"
             element={<CityList cities={cities} isLoading={isLoading} />}
           />
-          <Route path="countries" element={<p>countries</p>} />
+          <Route
+            path="countries"
+            element={<CountriesList cities={cities} isLoading={isLoading} />}
+          />
           <Route path="form" element={<p>Form</p>} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
