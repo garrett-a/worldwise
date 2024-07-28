@@ -3,7 +3,7 @@
 import styles from "./CountryList.module.css";
 import Spinner from "./Spinner";
 import Message from "./Message";
-import CountryItem from "./Message";
+import CountryItem from "./CountryItem";
 
 // eslint-disable-next-line react/prop-types
 export default function CountryList({ cities, isLoading }) {
@@ -19,6 +19,7 @@ export default function CountryList({ cities, isLoading }) {
       return [...arr, { country: city.country, emoji: city.emoji }];
     else return arr;
   }, []);
+
   console.log(countries);
   return (
     // eslint-disable-next-line react/jsx-no-comment-textnodes
